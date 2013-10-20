@@ -12,5 +12,5 @@ all:$(PDF)
 	mv $@ pdf/
 
 clean:
-	rm -f *.log *.nav *.aux *.out *.snm *.toc
+	rm -f *.log *.nav *.aux *.out *.snm *.toc *.synctex.gz
 	
