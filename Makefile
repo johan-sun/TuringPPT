@@ -1,9 +1,11 @@
 TEX = $(notdir $(wildcard *.tex))
 PDF = $(patsubst %.tex, %.pdf, $(TEX))
 
-.PHONY:all clean
+.PHONY:test clean turing
 
-all:$(PDF)
+turing:TuringPPT.pdf
+
+test:$(PDF)
 
 %.pdf:%.tex
 	xelatex $<
