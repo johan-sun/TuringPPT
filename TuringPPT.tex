@@ -213,13 +213,13 @@
 \end{frame}
 
 \subsection{NFA}
-\begin{frame}{非确定有限自动机(NFA)}
+\begin{frame}{非确定有限自动机(NFA)}\wuhao{
 \begin{itemize}
 	\item<1-> 拉宾和斯考特提出了非确定状态的有限自动机，引入了$\epsilon$
 	\item<2-> 非确定状态有限自动机很难用计算机来判别
 	\item<3-> 非确定状态有限自动机人很容易写出
 	\item<4-> 非确定自动机可以转化为自动机
-	\end{itemize}
+	\end{itemize}}
 \end{frame}
 
 \begin{frame}{非确定有限自动机(NFA)}
@@ -283,8 +283,8 @@
 					(s_2) edge node[above]{b} (s_3);}
 		\uncover<3->{\path[->] (s_3) edge[bend right=45] node[above]{$\epsilon$} (s_1)
 					(s_1) edge[bend right=45] node[above]{$\epsilon$} (s_3);}
-		\uncover<4->{\path[->] (s_4) edge node[above]{a} (s_5)
-					(s_5) edge node[above]{b} (s_6);}
+		\uncover<4->{\path[->] (s_4) edge node[above]{b} (s_5)
+					(s_5) edge node[above]{a} (s_6);}
 		\uncover<5->{\path[->] (s_6) edge[bend right=45] node[above]{$\epsilon$} (s_4)
 					(s_4) edge[bend right=45] node[above]{$\epsilon$} (s_6);}
 		\uncover<6->{\path[->] (s_0) edge node[above left] {$\epsilon$} (s_1)
@@ -296,6 +296,80 @@
 			\end{tikzpicture}
 		\caption*{\tiny识别$(ab)^*|(ba)^*$}
 	\end{figure}
+\end{frame}
+
+\subsection{子集构造法}
+\begin{frame}{子集构造法}
+	\qihao{
+	\begin{example}
+		\begin{itemize}
+		\item<2-> $T_0 = \epsilon-closure(0) = \{0,1,3,4,6,7\}$, $move(T_0, a) = \{ 2\}$,$move(T_0, b) = \{5\}$
+		\item<3-> $T_1 = \epsilon-closure(2) = \{ 2\}$,$move(T_1, b) = \{3\}$
+		\item<4-> $T_2 = \epsilon-closure(5) = \{5\}$, $move(T_2, a) = \{6\}$
+		\item<5-> $T_3 = \epsilon-closure(3) = \{1,3,7\}$,$move(T_3,a) = \{2\}$
+		\item<6-> $T_4 = \epsilon-closure(6) = \{ 4,6,7\}$, $move(T_4,b) = \{5\}$
+		\item<7-> $D(T_0, a) = T_1, D(T_0, b) = T_2, D(T_1, b) = T_3$\\
+			 $D(T_2, a) = T_4, D(T_3,a) = T_1, D(T_4,b) = T_2$
+		\end{itemize}
+	\end{example}}
+		\qihao{
+		\begin{figure}[htbp]
+			\begin{minipage}{0.4\textwidth}
+				\begin{tikzpicture}[shorten >= 1pt, node distance=1cm, on grid, >=stealth]
+					\node[state](s_0) {0};
+					\node[state](s_1)[above right =of s_0]{1};
+					\node[state](s_2)[right=of s_1]{2};
+					\node[state](s_3)[right=of s_2]{3};
+					\node[state](s_4)[below right=of s_0]{4};
+					\node[state](s_5)[right=of s_4]{5};
+					\node[state](s_6)[right=of s_5]{6};
+					\node[term](s_7)[below right=of s_3]{7};
+					
+					\uncover<2>{\node[on]() at (s_0) {0};}
+					\uncover<2,5>{\node[on]() at (s_1) {1};}
+					\uncover<3>{\node[on]() at (s_2) {2};}
+					\uncover<2,5>{\node[on]() at (s_3) {3};}
+					\uncover<2,6>{\node[on]() at (s_4) {4};}
+					\uncover<4>{\node[on]() at (s_5) {5};}
+					\uncover<2,6>{\node[on]() at (s_6) {6};}
+					\uncover<2,5,6>{\node[on]() at (s_7) {7};}
+					
+					\path[->] (s_1) edge node[above]{\textcolor<2>{red}{a}} (s_2)
+							(s_2) edge node[above]{\textcolor<3>{red}{b}} (s_3);
+					\path[->] (s_3) edge[bend right=45] node[above]{$\epsilon$} (s_1)
+							(s_1) edge[bend right=45] node[above]{$\epsilon$} (s_3);
+					\path[->] (s_4) edge node[above]{\textcolor<2>{red}{b}} (s_5)
+							(s_5) edge node[above]{\textcolor<4>{red}{a}} (s_6);
+					\path[->] (s_6) edge[bend right=45] node[above]{$\epsilon$} (s_4)
+							(s_4) edge[bend right=45] node[above]{$\epsilon$} (s_6);
+					\path[->] (s_0) edge node[above left] {$\epsilon$} (s_1)
+							(s_0) edge node[below left] {$\epsilon$} (s_4);
+					\path[->] (s_3) edge node[above right] {$\epsilon$} (s_7)
+							(s_6) edge node[below right] {$\epsilon$} (s_7);
+				\end{tikzpicture}
+			\end{minipage}
+			\begin{minipage}{0.4\textwidth}
+			\uncover<6->{
+				\begin{tikzpicture}[shorten >= 1pt, node distance=1cm, on grid, >=stealth]
+					\node(start){start};
+					\node[term](t_0) [right=of start]{$T_0$};
+					\node[state](t_1)[above right=of t_0] {$T_1$};
+					\node[term](t_3)[right=of t_1]{$T_3$};
+					\node[state](t_2)[below right=of t_0]{$T_2$};
+					\node[term](t_4)[right=of t_2]{$T_4$};
+					\uncover<7->{\path[->] (start) edge (t_0)
+							(t_0) edge node[above left]{a} (t_1)
+							        edge node[below left]{b} (t_2)
+							(t_1) edge node[above]{b} (t_3)
+							(t_3) edge[bend right=45] node[above]{a} (t_1)
+							(t_2) edge node[above]{a}(t_4)
+							(t_4) edge[bend left=45] node[below]{b} (t_2);}
+				\end{tikzpicture}
+			}
+			\end{minipage}
+		\end{figure}
+		}
+		
 \end{frame}
 
 
@@ -376,7 +450,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{计算股有难度}
+\section{计算固有难度}
 \subsection{麦卡锡难题}
 \begin{frame}{麦肯锡的难题}
 \wuhao{
@@ -386,7 +460,6 @@
 
 你是否能设计出一套方案，既能让间谍安全的回来，又不让敌人使用从守卫哪里打听到的信息把他们的间谍混进来？}
 \end{frame}
-
 \begin{frame}
 \wuhao{拉宾采用了一种叫做『单项』函数的算法得出了觉得方案。所谓的单项函数，就是一个方向的计算很容易，但是反过来很难。}
 	\uncover<2->{\begin{example}
@@ -396,6 +469,39 @@
 	\end{example}}
 	
 \uncover<6->{\wuhao{通过X计算Y很简单，但是通过Y计算X非常难}}
+\end{frame}
+
+\begin{frame}{固有难度}
+	平方取数的你运算可做，但是难度非常大，拉宾就提出了计算固有难度这一说法。\pause
+	
+	有些运算是可计算的，但是由于其固有难度非常高，你几乎无法在有限时间内得出结论，所以它的可计算性也就是失去意义了。\pause
+	
+	%就好比不管你用动滑轮还是定滑轮提起物体，都至少要克服重力做过，这就是提物体固有难度
+	\begin{figure}
+		\includegraphics{figures/gynd.eps}
+		\caption*{\tiny 固有难度克服重力做功$mgh$}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{固有难度}
+	在拉宾那个年代，人工智能界有不少科学家还在执着于编写程序来验证“匹斯伯格系统的原理”。\pause
+	
+	\textcolor{red}{拉宾干了一件很坑爹的事情！}\pause
+	
+	证明了一个哪怕只有100符号的系统，即使用1万台每秒一亿次的计算机，也要运行一万一年\pause，他妈还不止！\pause
+	
+	当拉宾的演讲结束，研究人工智能的人们都在惊呼这是世界末日，因为他们的实验室可能再也不会得到资助了。
+	\begin{figure}
+		\begin{minipage}[b]{0.3\textwidth}\centering
+			\includegraphics[scale=0.15]{figures/mgd1.eps}
+		\end{minipage}
+		\begin{minipage}[b]{0.3\textwidth}\centering
+			\includegraphics[scale=0.15]{figures/mgd2.eps}
+		\end{minipage}
+		\begin{minipage}[b]{0.3\textwidth}\centering
+			\includegraphics[scale=0.15]{figures/mgd3.eps}
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 \section{随机性理论}
@@ -426,10 +532,10 @@
 	\uncover<3->{也就是说每一次检验都随机到了$1\over4$的非新式见证者。}
 	\uncover<4->{那么150次检验都错误的概率是
 	\begin{equation*}
-		P(error) = {1\over4} ^{150} \approx  10^{-91}
+		P(error) = \left({1\over4}\right)^{150} \approx  10^{-91}
 	\end{equation*}}
 	
-	可能性几乎为0.
+	\uncover<5->{可能性几乎为0.}
 \end{frame}
 
 
