@@ -62,15 +62,13 @@
 \subtitle
 {Michael O. Rabin,  Dana Steward Scott}
 
-\author[ly \and syh]% (optional, use only with lots of authors)
+\author% (optional, use only with lots of authors)
 {林胤\and 孙渊汇}
 
 \institute
 {
   同济大学电子与信息学院
 }
-
-
 
 \AtBeginSection[]
 {
@@ -128,7 +126,7 @@
 			\item 1931年9月1日 出生于德国布雷斯劳(二战后成为波兰弗罗茨瓦夫)
 			\item 1953年 获希伯来大学理学硕士(22岁)
 			\item 1956年 获普林斯顿大学博士学位(25岁)
-			\item 1959年 与达纳斯·斯科特共同发表“有限自动机与其判定性问题”(28岁)
+			\item \textcolor{red}{1959年 与达纳斯·斯科特共同发表“有限自动机与其判定性问题”(28岁)}
 			\item 1975年 发明“米勒-拉宾素数检验”(44岁)
 			\item 1976年 获得图灵奖，发表“计算复杂性”演讲(45岁)
 			\item 1979年 发明第一个非对称密码系统—拉宾密码系统(48岁)
@@ -158,7 +156,7 @@
 		\item 1932年10月11日生于美国加利福尼亚州
 		\item 1954年获加州大学伯克利分校学士学位(22岁)
 		\item 1958年获普林斯顿大学博士学位(26岁)
-		\item 1959年与迈克尔·拉宾共同发表“有限自动机与其判定性问题”(27岁)
+		\item \textcolor{red}{1959年与迈克尔·拉宾共同发表“有限自动机与其判定性问题”(27岁)}
 		\item 1972年获美国数学协会(AMS)的勒罗伊·斯蒂尔奖(40岁)
 		\item 1976年获得图灵奖，发表“逻辑与程序设计语言”(44岁)
 		\item 1997年获皇家瑞典皇家科学院颁发的罗尔夫·朔克逻辑和哲学奖(65岁)
@@ -174,16 +172,7 @@
 
 \section{图灵奖内容}
 %想办法减少文字
-\begin{frame}
-	\begin{itemize}
-	\item
-	拉宾和斯考特证明，对于有限状态机来说，任何由非确定机解决的问题也可以在确定性机器上解决，并提出了之间的转换方法。
-	\item
-	非确定有限自动机被证明在语言翻译、文献检索和文字处理程序表达模式搜索的一种绝佳方式。
-	\end{itemize}
-\end{frame}
-	
-\subsection{DFA}
+\subsection{DFA与局限性}
 \begin{frame}{确定有限自动机(DFA)}
 	\only<1>{一个确定有限自动机，对于每一个状态来说，他的下一个状态是确定的。}
 	\only<2->{
@@ -210,6 +199,24 @@
 	
 	识别串\textcolor<3>{red}a\textcolor<4>{red}a\textcolor<5>{red}a\textcolor<6>{red}b
 	}
+\end{frame}
+
+\begin{frame}{DFA的局限性}
+	确定有限自动机每一个状态后面的状态都是确定的，但是现实生活中有很多时候选择并不唯一。\pause
+	
+	当我们在餐馆，菜单上有许多菜品，我们可能选择甜点，也可能选择主菜，这不是一个随机过程，但是确实是非确定的。\pause
+	当我们选择了某一个种菜品后，我们就进入了另一个状态，结果就是满意或者不满意，也就是接受或者拒绝。\pause
+	
+	因此针对输入只要有任何一种可能达到的“可接受状态”，“非确定性”的机器就会“接受”并运行下去。
+\end{frame}
+
+\begin{frame}{DFA的局限性}
+	\begin{itemize}
+	\item
+	拉宾和斯考特证明，对于有限状态机来说，任何由非确定机解决的问题也可以在确定性机器上解决，并提出了之间的转换方法。
+	\item
+	非确定有限自动机被证明在语言翻译、文献检索和文字处理程序表达模式搜索的一种绝佳方式。
+	\end{itemize}
 \end{frame}
 
 \subsection{NFA}
@@ -300,18 +307,10 @@
 
 \subsection{子集构造法}
 \begin{frame}{子集构造法}
-	\qihao{
-	\begin{example}
-		\begin{itemize}
-		\item<2-> $T_0 = \epsilon-closure(0) = \{0,1,3,4,6,7\}$, $move(T_0, a) = \{ 2\}$,$move(T_0, b) = \{5\}$
-		\item<3-> $T_1 = \epsilon-closure(2) = \{ 2\}$,$move(T_1, b) = \{3\}$
-		\item<4-> $T_2 = \epsilon-closure(5) = \{5\}$, $move(T_2, a) = \{6\}$
-		\item<5-> $T_3 = \epsilon-closure(3) = \{1,3,7\}$,$move(T_3,a) = \{2\}$
-		\item<6-> $T_4 = \epsilon-closure(6) = \{ 4,6,7\}$, $move(T_4,b) = \{5\}$
-		\item<7-> $D(T_0, a) = T_1, D(T_0, b) = T_2, D(T_1, b) = T_3$\\
-			 $D(T_2, a) = T_4, D(T_3,a) = T_1, D(T_4,b) = T_2$
-		\end{itemize}
-	\end{example}}
+	拉宾和斯考特利用集合论的方法提出了任何NFA转换为DFA的算法。\pause
+	
+	子集构造法就是依次对NFA的状态求闭包运算，闭包中的元素作为一个新状态，然后计算新状态之间的关系。\pause
+	
 		\qihao{
 		\begin{figure}[htbp]
 			\begin{minipage}{0.4\textwidth}
@@ -324,22 +323,13 @@
 					\node[state](s_5)[right=of s_4]{5};
 					\node[state](s_6)[right=of s_5]{6};
 					\node[term](s_7)[below right=of s_3]{7};
-					
-					\uncover<2>{\node[on]() at (s_0) {0};}
-					\uncover<2,5>{\node[on]() at (s_1) {1};}
-					\uncover<3>{\node[on]() at (s_2) {2};}
-					\uncover<2,5>{\node[on]() at (s_3) {3};}
-					\uncover<2,6>{\node[on]() at (s_4) {4};}
-					\uncover<4>{\node[on]() at (s_5) {5};}
-					\uncover<2,6>{\node[on]() at (s_6) {6};}
-					\uncover<2,5,6>{\node[on]() at (s_7) {7};}
-					
-					\path[->] (s_1) edge node[above]{\textcolor<2>{red}{a}} (s_2)
-							(s_2) edge node[above]{\textcolor<3>{red}{b}} (s_3);
+										
+					\path[->] (s_1) edge node[above]{a} (s_2)
+							(s_2) edge node[above]{b} (s_3);
 					\path[->] (s_3) edge[bend right=45] node[above]{$\epsilon$} (s_1)
 							(s_1) edge[bend right=45] node[above]{$\epsilon$} (s_3);
-					\path[->] (s_4) edge node[above]{\textcolor<2>{red}{b}} (s_5)
-							(s_5) edge node[above]{\textcolor<4>{red}{a}} (s_6);
+					\path[->] (s_4) edge node[above]{b} (s_5)
+							(s_5) edge node[above]{a} (s_6);
 					\path[->] (s_6) edge[bend right=45] node[above]{$\epsilon$} (s_4)
 							(s_4) edge[bend right=45] node[above]{$\epsilon$} (s_6);
 					\path[->] (s_0) edge node[above left] {$\epsilon$} (s_1)
@@ -349,7 +339,7 @@
 				\end{tikzpicture}
 			\end{minipage}
 			\begin{minipage}{0.4\textwidth}
-			\uncover<6->{
+			\uncover<4->{
 				\begin{tikzpicture}[shorten >= 1pt, node distance=1cm, on grid, >=stealth]
 					\node(start){start};
 					\node[term](t_0) [right=of start]{$T_0$};
@@ -357,24 +347,99 @@
 					\node[term](t_3)[right=of t_1]{$T_3$};
 					\node[state](t_2)[below right=of t_0]{$T_2$};
 					\node[term](t_4)[right=of t_2]{$T_4$};
-					\uncover<7->{\path[->] (start) edge (t_0)
+					\path[->] (start) edge (t_0)
 							(t_0) edge node[above left]{a} (t_1)
 							        edge node[below left]{b} (t_2)
 							(t_1) edge node[above]{b} (t_3)
 							(t_3) edge[bend right=45] node[above]{a} (t_1)
 							(t_2) edge node[above]{a}(t_4)
-							(t_4) edge[bend left=45] node[below]{b} (t_2);}
+							(t_4) edge[bend left=45] node[below]{b} (t_2);
 				\end{tikzpicture}
+					\caption*{\qihao{其中$T_0 = \{0,1,3,4,6,7\}$\\$T_1=\{2\}$,$T_2=\{5\}$\\$T_3=\{1,3,7\}$,$T_4=\{4,6,7\}$}}
 			}
 			\end{minipage}
 		\end{figure}
 		}
-		
+
+	
+%	\qihao{
+%	\begin{example}
+%		\begin{itemize}
+%		\item<2-> $T_0 = \epsilon-closure(0) = \{0,1,3,4,6,7\}$, $move(T_0, a) = \{ 2\}$,$move(T_0, b) = \{5\}$
+%		\item<3-> $T_1 = \epsilon-closure(2) = \{ 2\}$,$move(T_1, b) = \{3\}$
+%		\item<4-> $T_2 = \epsilon-closure(5) = \{5\}$, $move(T_2, a) = \{6\}$
+%		\item<5-> $T_3 = \epsilon-closure(3) = \{1,3,7\}$,$move(T_3,a) = \{2\}$
+%		\item<6-> $T_4 = \epsilon-closure(6) = \{ 4,6,7\}$, $move(T_4,b) = \{5\}$
+%		\item<7-> $D(T_0, a) = T_1, D(T_0, b) = T_2, D(T_1, b) = T_3$\\
+%			 $D(T_2, a) = T_4, D(T_3,a) = T_1, D(T_4,b) = T_2$
+%		\end{itemize}
+%	\end{example}}
+%		\qihao{
+%		\begin{figure}[htbp]
+%			\begin{minipage}{0.4\textwidth}
+%				\begin{tikzpicture}[shorten >= 1pt, node distance=1cm, on grid, >=stealth]
+%					\node[state](s_0) {0};
+%					\node[state](s_1)[above right =of s_0]{1};
+%					\node[state](s_2)[right=of s_1]{2};
+%					\node[state](s_3)[right=of s_2]{3};
+%					\node[state](s_4)[below right=of s_0]{4};
+%					\node[state](s_5)[right=of s_4]{5};
+%					\node[state](s_6)[right=of s_5]{6};
+%					\node[term](s_7)[below right=of s_3]{7};
+%					
+%					\uncover<2>{\node[on]() at (s_0) {0};}
+%					\uncover<2,5>{\node[on]() at (s_1) {1};}
+%					\uncover<3>{\node[on]() at (s_2) {2};}
+%					\uncover<2,5>{\node[on]() at (s_3) {3};}
+%					\uncover<2,6>{\node[on]() at (s_4) {4};}
+%					\uncover<4>{\node[on]() at (s_5) {5};}
+%					\uncover<2,6>{\node[on]() at (s_6) {6};}
+%					\uncover<2,5,6>{\node[on]() at (s_7) {7};}
+%					
+%					\path[->] (s_1) edge node[above]{\textcolor<2>{red}{a}} (s_2)
+%							(s_2) edge node[above]{\textcolor<3>{red}{b}} (s_3);
+%					\path[->] (s_3) edge[bend right=45] node[above]{$\epsilon$} (s_1)
+%							(s_1) edge[bend right=45] node[above]{$\epsilon$} (s_3);
+%					\path[->] (s_4) edge node[above]{\textcolor<2>{red}{b}} (s_5)
+%							(s_5) edge node[above]{\textcolor<4>{red}{a}} (s_6);
+%					\path[->] (s_6) edge[bend right=45] node[above]{$\epsilon$} (s_4)
+%							(s_4) edge[bend right=45] node[above]{$\epsilon$} (s_6);
+%					\path[->] (s_0) edge node[above left] {$\epsilon$} (s_1)
+%							(s_0) edge node[below left] {$\epsilon$} (s_4);
+%					\path[->] (s_3) edge node[above right] {$\epsilon$} (s_7)
+%							(s_6) edge node[below right] {$\epsilon$} (s_7);
+%				\end{tikzpicture}
+%			\end{minipage}
+%			\begin{minipage}{0.4\textwidth}
+%			\uncover<6->{
+%				\begin{tikzpicture}[shorten >= 1pt, node distance=1cm, on grid, >=stealth]
+%					\node(start){start};
+%					\node[term](t_0) [right=of start]{$T_0$};
+%					\node[state](t_1)[above right=of t_0] {$T_1$};
+%					\node[term](t_3)[right=of t_1]{$T_3$};
+%					\node[state](t_2)[below right=of t_0]{$T_2$};
+%					\node[term](t_4)[right=of t_2]{$T_4$};
+%					\uncover<7->{\path[->] (start) edge (t_0)
+%							(t_0) edge node[above left]{a} (t_1)
+%							        edge node[below left]{b} (t_2)
+%							(t_1) edge node[above]{b} (t_3)
+%							(t_3) edge[bend right=45] node[above]{a} (t_1)
+%							(t_2) edge node[above]{a}(t_4)
+%							(t_4) edge[bend left=45] node[below]{b} (t_2);}
+%				\end{tikzpicture}
+%			}
+%			\end{minipage}
+%		\end{figure}
+%		}
+%		
 \end{frame}
 
+\begin{frame}{颁奖词}
+因他们的合著论文“有限自动机与其判定性问题”。论文中引入了非确定自动机的概念，被证明是（计算理论科学研究中的）一个非常重要的概念。拉宾和斯科特的这篇经典论文成为了这个领域后续研究的源泉。
+\end{frame}
 
 \section{拉宾的故事}
-\begin{frame}{拉宾小时候的故事}
+\begin{frame}{拉宾的故事}
 \begin{itemize}
 \item<1-> 1931年9月1日拉宾出生于德国布雷斯劳(二战后成为波兰弗罗茨瓦夫)的一个拉比家庭,父母是哲学和文学博士。
 \item<3-> 1935年,由于拉宾的父亲看到了反犹太主义,于是他们居家迁居到巴勒斯坦生活
@@ -463,7 +528,7 @@
 你是否能设计出一套方案，既能让间谍安全的回来，又不让敌人使用从守卫哪里打听到的信息把他们的间谍混进来？}
 \end{frame}
 \begin{frame}
-\wuhao{拉宾采用了一种叫做『单项』函数的算法得出了解决方案。所谓的单项函数，就是一个方向的计算很容易，但是反过来很难。}
+\wuhao{拉宾采用了一种叫做『单向』函数的算法得出了解决方案。所谓的单项函数，就是一个方向的计算很容易，但是反过来很难。}
 	\uncover<2->{\begin{example}
 	\uncover<3->{$X = (b_mb_{m-1}b_{m-2}\cdots b_3b_2b_1)_{10}$}
 	\uncover<4->{$X^2 = (c_{2m}c_{2m-1}c_{2m-2}\cdots \underbrace{c_{m+m/2}\cdots c_{m-m/2}}_{Y}\cdots c_3c_2c_1)_{10}$}
@@ -473,24 +538,25 @@
 \uncover<6->{\wuhao{通过X计算Y很简单，但是通过Y计算X非常难}}
 \end{frame}
 
+\subsection{“世界末日”}
 \begin{frame}{固有难度}
 	平方取数的你运算可做，但是难度非常大，拉宾就提出了计算固有难度这一说法。\pause
 	
 	有些运算是可计算的，但是由于其固有难度非常高，你几乎无法在有限时间内得出结论，所以它的可计算性也就是失去意义了。\pause
 	
 	%就好比不管你用动滑轮还是定滑轮提起物体，都至少要克服重力做过，这就是提物体固有难度
-	\begin{figure}
-		\includegraphics{figures/gynd.eps}
-		\caption*{\tiny 固有难度克服重力做功$mgh$}
-	\end{figure}
+%	\begin{figure}
+%		\includegraphics{figures/gynd.eps}
+%		\caption*{\tiny 固有难度克服重力做功$mgh$}
+%	\end{figure}
 \end{frame}
 
-\begin{frame}{固有难度}
+\begin{frame}{“世界末日”}
 	在拉宾那个年代，人工智能界有不少科学家还在执着于编写程序来验证“匹斯伯格系统的原理”。\pause
 	
 	\textcolor{red}{拉宾干了一件很坑爹的事情！}\pause
 	
-	证明了一个哪怕只有100符号的系统，即使用1万台每秒一亿次的计算机，也要运行一万一年\pause，他妈还不止！\pause
+	证明了一个哪怕只有100符号的系统，即使用1万台每秒一亿次的计算机，也要运行一万一年。\pause
 	
 	当拉宾的演讲结束，研究人工智能的人们都在惊呼这是世界末日，因为他们的实验室可能再也不会得到资助了。
 	\begin{figure}
@@ -507,8 +573,17 @@
 \end{frame}
 
 \section{随机性理论}
-\subsection{素数检验}
-\begin{frame}
+\begin{frame}{原始的素数判定算法}
+	对于一个数n来说
+	\begin{itemize}
+	\item 从$(2, \sqrt(n))$中依次取数
+	\item 逐个验证其是否是$n$的因子
+	\item 如果有一个数是$n$的因子，则$n$显然为合数
+	\item 否则，我们就宣称n为素数
+	\end{itemize}
+
+\end{frame}
+\begin{frame}{新式见证者}
 	\wuhao{『素数』一直是数学家很关心的一个问题，而『素数判定算法』也是计算机界一个非常基本的算法，但就是这样一个非常基本甚至我们都会编写的算法，在实际应用中遇到什么问题了呢？2的127次方减1，是一个38位数，要验证它是否为素数，假设计算机每秒钟能运算1亿次除法，那么用当时最好的素数判断算法，也需要93年才能得出结论。}
 	\begin{example}
 	\uncover<3->{$28$的传统意义的见证者:}\\
@@ -530,7 +605,7 @@
 
 \begin{frame}{错误的概率}
 	\uncover<1->{这个结论绝对正确么？}
-	\uncover<2->{假设$K=150$，算法错误的情况是$n$为合数，检验结果数素数。\\}
+	\uncover<2->{算法错误的情况是$n$为合数，检验结果数素数。\\}
 	\uncover<3->{也就是说必须在150次内每次都避免抽中『见证者』。}
 	\uncover<4->{
 	\begin{equation*}
@@ -541,6 +616,27 @@
 \end{frame}
 
 
+\section*{Thank You}
+\begin{frame}
+\begin{center}
+	\chuhao{Thank You}
+\end{center}
+
+\liuhao{
+林胤
+\begin{description}
+\item[Blog] \href{http://findingsea.github.io}{\textcolor{blue}{\underline{findingsea.github.io}}}
+\item[Github] \href{https://github.com/findingsea}{\textcolor{blue}{\underline{https://github.com/findingsea}}}
+\end{description}
+
+孙渊汇
+\begin{description}
+\item[Blog] \href{http://syhkiller.github.io}{\textcolor{blue}{\underline{syhkiller.github.io}}}\\
+\item[Github] \href{https://github.com/syhkiller}{\textcolor{blue}{\underline{https://github.com/syhkiller}}}
+\end{description}
+
+PPT源代码@\href{https://github.com/syhkiller/TuringPPT}{\textcolor{blue}{\underline{https://github.com/syhkiller/TuringPPT}}} \\
+forked by \href{https://github.com/findingsea/TuringPPT}{\textcolor{blue}{\underline{https://github.com/findingsea/TuringPPT}}}}
+\end{frame}
 
 \end{document}
-
