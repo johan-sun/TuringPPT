@@ -173,6 +173,93 @@
 \tikzset{ term/.style={circle,double,draw=black}}
 \tikzset{on/.style={circle,draw=black,fill=red}}
 
+\section{拉宾的故事}
+\begin{frame}{拉宾的故事}
+\begin{itemize}
+\item<1-> 1931年9月1日拉宾出生于德国布雷斯劳(二战后成为波兰弗罗茨瓦夫)的一个拉比家庭,父母是哲学和文学博士。
+\item<3-> 1935年,由于拉宾的父亲看到了反犹太主义,于是他们居家迁居到巴勒斯坦生活
+\item<5-> 之后到了以色列港口城市海法,在一所宗教小学念书
+\item<6-> 小时候的拉宾对微生物刚兴趣,一直梦想成为一名微生物学家
+\end{itemize}
+\begin{figure}[htbp]
+	\uncover<2->{\begin{minipage}[b]{0.3\textwidth}\centering
+		\includegraphics[scale=0.13]{figures/flzwjt.eps}
+		\caption*{\tiny弗罗茨瓦夫大教堂}
+	\end{minipage}}
+	\uncover<4->{\begin{minipage}[b]{0.3\textwidth}\centering
+		\includegraphics[scale=0.25]{figures/hf.eps}
+		\caption*{\tiny海法中心花园}
+	\end{minipage}}
+	\uncover<7->{\begin{minipage}[b]{0.3\textwidth}\centering
+		\includegraphics[scale=0.12]{figures/wsw.eps}
+		\caption*{\tiny大肠杆菌}
+	\end{minipage}}
+\end{figure}
+\end{frame}
+
+
+\subsection{特殊的挑衅}
+\begin{frame}{特殊的挑衅}
+\begin{figure}
+	\begin{minipage}{0.3\textwidth}
+		\uncover<2->{\centering\includegraphics[scale=0.05]{figures/jhyb.eps}
+		\caption*{\tiny几何原本中译本}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.65\textwidth}
+		\uncover<1->{~~~~一天拉宾在教室外面罚站，刚好有两个九年级的学生正那里解欧式几何，拉宾一直站在旁边看。}
+		\uncover<2->{恰好他们有个问题解不出来，反过来以此挑衅拉宾。}
+		\uncover<3->{偏偏拉宾解出来了，经过证明创建出关于线与圆的真理。}
+	\end{minipage}
+\end{figure}
+	
+		
+	\uncover<3->{\centering\textcolor{red}{拉宾被其所具有的美所震撼}}
+	\vspace{1em}
+	
+	\uncover<4->{之后拉宾就劝说其父亲将他送去莱利学院学习自然科学知识}
+	\end{frame}
+	
+\subsection{图灵的诱惑}
+\begin{frame}{图灵停机}
+	\only<1>{英国科学家图灵}\only<2>{提出了一个无法由计算机解决的问题：}
+	\only<3>{能否为计算机$X$编程，使其在有限的时间内判断出计算机$Y$上运行的程序是否会停止运行？}%如果计算机Y停止运行，要运行一个程序通知X，则Y又要运行进行检测，显然是一个不可解决问题
+	\only<4>{这就是著名的\textbf{\textcolor{red}{图灵停机}}问题。}
+	\begin{figure}[htbp]
+		\uncover<1->{\begin{minipage}[b]{0.2\textwidth}\centering
+			\includegraphics[scale=0.15]{figures/tl.eps}
+			\caption*{\tiny图灵本人}
+		\end{minipage}}
+		\uncover<4->{\begin{minipage}[b]{0.2\textwidth}\centering
+			\includegraphics[scale=0.4]{figures/tltj.eps}
+			\caption*{\tiny图灵机}
+		\end{minipage}}
+		\uncover<5->{\begin{minipage}[b]{0.2\textwidth}\centering
+			\includegraphics[scale=0.2]{figures/bxfny.eps}
+			\caption*{\tiny宾夕法尼亚大学校徽}
+		\end{minipage}}
+		\uncover<6->{\begin{minipage}[b]{0.2\textwidth}\centering
+			\includegraphics[scale=0.4]{figures/plsd.eps}
+			\caption*{\tiny普林斯顿大学校徽}
+		\end{minipage}}
+	\end{figure}
+	
+	\uncover<5->{拉宾对此问题非常痴迷，由于以色列没有计算机，拉宾到了宾夕法尼亚大学攻读数学，}\uncover<6->{然后在普林斯顿大学攻读逻辑学博士。}
+\end{frame}
+
+\subsection{完美的合作}
+\begin{frame}{注定相遇}
+	\begin{itemize}\wuhao{
+		\item 拉宾的博士论文讨论了代数群的可计算问题，类似图灵定义了计算上解决与不可解决的界限一样，证明了关于群的某些问题不可计算。
+		\pause
+		\item 1957年，拉宾还在完成自己的论文，IBM研究院为他和另一位年轻的逻辑学家提供了一份暑期工作，而这个人就是斯科特。
+		\pause
+		\item 斯考特是逻辑学方面的天才，他们两个人一起研究，提出了一个概念：能够『猜测』的计算机。\pause
+		\item 他们的合作是非凡的，往往一个人先提出问题，然后各自回到自己的角落，然后另一个人很快就会给出解决方案。\pause
+		\item 大概在三周之内就完成了所有工作，包括在论文中由于篇幅所限未能提及的理论。
+		}
+	\end{itemize}
+\end{frame}
 
 \section{图灵奖内容}
 %想办法减少文字
@@ -398,87 +485,6 @@
 因他们的合著论文『有限自动机与其判定性问题』。论文中引入了非确定自动机的概念，被证明是（计算理论科学研究中的）一个非常重要的概念。拉宾和斯科特的这篇经典论文成为了这个领域后续研究的源泉。
 
 \hfill—图灵奖委员会
-\end{frame}
-
-\section{拉宾的故事}
-\begin{frame}{拉宾的故事}
-\begin{itemize}
-\item<1-> 1931年9月1日拉宾出生于德国布雷斯劳(二战后成为波兰弗罗茨瓦夫)的一个拉比家庭,父母是哲学和文学博士。
-\item<3-> 1935年,由于拉宾的父亲看到了反犹太主义,于是他们居家迁居到巴勒斯坦生活
-\item<5-> 之后到了以色列港口城市海法,在一所宗教小学念书
-\item<6-> 小时候的拉宾对微生物刚兴趣,一直梦想成为一名微生物学家
-\end{itemize}
-\begin{figure}[htbp]
-	\uncover<2->{\begin{minipage}[b]{0.3\textwidth}\centering
-		\includegraphics[scale=0.13]{figures/flzwjt.eps}
-		\caption*{\tiny弗罗茨瓦夫大教堂}
-	\end{minipage}}
-	\uncover<4->{\begin{minipage}[b]{0.3\textwidth}\centering
-		\includegraphics[scale=0.25]{figures/hf.eps}
-		\caption*{\tiny海法中心花园}
-	\end{minipage}}
-	\uncover<7->{\begin{minipage}[b]{0.3\textwidth}\centering
-		\includegraphics[scale=0.12]{figures/wsw.eps}
-		\caption*{\tiny大肠杆菌}
-	\end{minipage}}
-\end{figure}
-\end{frame}
-
-
-\subsection{特殊的挑衅}
-\begin{frame}{特殊的挑衅}
-	\wuhao{\begin{figwindow}[0, l, {\uncover<2->{\includegraphics[scale=0.05]{figures/jhyb.eps}}},*{\uncover<2->{\tiny几何原本中译本}}]
-		\uncover<1->{有一天拉宾被罚在教室外面罚站,刚好有两个九年级的学生正那里解欧式几何，拉宾一直站在旁边看。}
-		\uncover<2->{恰好他们有个问题解不出来，反过来以此挑衅拉宾。}
-	\end{figwindow}}
-	
-	\uncover<3->{偏偏拉宾解出来了，经过证明创建出关于线与圆的真理。}
-	
-	\uncover<3->{\centering\textcolor{red}{拉宾被其所具有的美所震撼}}
-	\vspace{1em}
-	
-	\uncover<4->{之后拉宾就劝说其父亲将他送去莱利学院学习自然科学知识。}
-	\end{frame}
-	
-\subsection{图灵的诱惑}
-\begin{frame}{图灵停机}
-	\only<1>{英国科学家图灵}\only<2>{提出了一个无法由计算机解决的问题：}
-	\only<3>{能否为计算机$X$编程，使其在有限的时间内判断出计算机$Y$上运行的程序是否会停止运行？}%如果计算机Y停止运行，要运行一个程序通知X，则Y又要运行进行检测，显然是一个不可解决问题
-	\only<4>{这就是著名的\textbf{\textcolor{red}{图灵停机}}问题。}
-	\begin{figure}[htbp]
-		\uncover<1->{\begin{minipage}[b]{0.2\textwidth}\centering
-			\includegraphics[scale=0.15]{figures/tl.eps}
-			\caption*{\tiny图灵本人}
-		\end{minipage}}
-		\uncover<4->{\begin{minipage}[b]{0.2\textwidth}\centering
-			\includegraphics[scale=0.4]{figures/tltj.eps}
-			\caption*{\tiny图灵机}
-		\end{minipage}}
-		\uncover<5->{\begin{minipage}[b]{0.2\textwidth}\centering
-			\includegraphics[scale=0.2]{figures/bxfny.eps}
-			\caption*{\tiny宾夕法尼亚大学校徽}
-		\end{minipage}}
-		\uncover<6->{\begin{minipage}[b]{0.2\textwidth}\centering
-			\includegraphics[scale=0.4]{figures/plsd.eps}
-			\caption*{\tiny普林斯顿大学校徽}
-		\end{minipage}}
-	\end{figure}
-	
-	\uncover<5->{拉宾对此问题非常痴迷，由于以色列没有计算机，拉宾到了宾夕法尼亚大学攻读数学，}\uncover<6->{然后在普林斯顿大学攻读逻辑学博士。}
-\end{frame}
-
-\subsection{完美的合作}
-\begin{frame}{注定相遇}
-	\begin{itemize}\wuhao{
-		\item 拉宾的博士论文讨论了代数群的可计算问题，类似图灵定义了计算上解决与不可解决的界限一样，证明了关于群的某些问题不可计算。
-		\pause
-		\item 1957年，拉宾还在完成自己的论文，IBM研究院为他和另一位年轻的逻辑学家提供了一份暑期工作，而这个人就是斯科特。
-		\pause
-		\item 斯考特是逻辑学方面的天才，他们两个人一起研究，提出了一个概念：能够『猜测』的计算机。\pause
-		\item 他们的合作是非凡的，往往一个人先提出问题，然后各自回到自己的角落，然后另一个人很快就会给出解决方案。\pause
-		\item 大概在三周之内就完成了所有工作，包括在论文中由于篇幅所限未能提及的理论。
-		}
-	\end{itemize}
 \end{frame}
 
 \section{计算固有难度}
