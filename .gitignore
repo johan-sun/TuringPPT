@@ -1,8 +1,11 @@
-*.log 
-*.nav 
-*.aux 
+#################
+# tex temp file #
+#################
+*.log
+*.nav
+*.aux
 *.out 
-*.snm 
+*.snm
 *.toc
 *.pdf
 .DS_Store
