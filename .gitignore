@@ -4,8 +4,9 @@
 *.log
 *.nav
 *.aux
-*.out 
+*.out
 *.snm
 *.toc
 *.pdf
+*.gz
 .DS_Store
