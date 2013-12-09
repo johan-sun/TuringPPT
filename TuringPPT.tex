@@ -7,23 +7,15 @@
 }
 
 \usepackage[slantfont,boldfont]{xeCJK}
-\setmainfont{Monaco}
-\setCJKmainfont{Songti SC}
-\setCJKfamilyfont{song}{Songti SC}
+\setCJKmainfont{Songti SC} %mac osx
+%\setCJKmainfont{SimSun} windows下使用
 
 
 
-%\setCJKmainfont{Songti SC}   % STFangsong 设置缺省中文字体
-%\setCJKmonofont{STFangsong}   % 设置等宽字体
-%\setCJKsansfont{Songti SC}
-%\setmainfont{Heiti TC} % 英文衬线字体
-%\setmonofont{STFangsong} % 英文等宽字体
-%\setsansfont{Times} % 英文无衬线字体
-
-\usepackage{fontspec}%字间距控制?
+\usepackage{fontspec}%字间距控制
 \usepackage{tikz}%绘图
 \usetikzlibrary{positioning} %on grid
-\usetikzlibrary{automata} %style?
+\usetikzlibrary{automata} %style
 \usetikzlibrary{shapes,snakes}%各中形状
 
 \usepackage{picinpar}
@@ -168,8 +160,7 @@
 	\end{itemize}}}
 \end{frame}
 
-
-\tikzset{ state/.style={circle,draw=black}}
+\tikzset{ state/.style={circle,draw=black}} %定义样式
 \tikzset{ term/.style={circle,double,draw=black}}
 \tikzset{on/.style={circle,draw=black,fill=red}}
 
@@ -184,15 +175,15 @@
 \begin{figure}[htbp]
 	\uncover<2->{\begin{minipage}[b]{0.3\textwidth}\centering
 		\includegraphics[scale=0.13]{figures/flzwjt.eps}
-		\caption*{\tiny弗罗茨瓦夫大教堂}
+		\caption*{\tiny 弗罗茨瓦夫大教堂}
 	\end{minipage}}
 	\uncover<4->{\begin{minipage}[b]{0.3\textwidth}\centering
 		\includegraphics[scale=0.25]{figures/hf.eps}
-		\caption*{\tiny海法中心花园}
+		\caption*{\tiny 海法中心花园}
 	\end{minipage}}
 	\uncover<7->{\begin{minipage}[b]{0.3\textwidth}\centering
 		\includegraphics[scale=0.12]{figures/wsw.eps}
-		\caption*{\tiny大肠杆菌}
+		\caption*{\tiny 大肠杆菌}
 	\end{minipage}}
 \end{figure}
 \end{frame}
@@ -203,7 +194,7 @@
 \begin{figure}
 	\begin{minipage}{0.3\textwidth}
 		\uncover<2->{\centering\includegraphics[scale=0.05]{figures/jhyb.eps}
-		\caption*{\tiny几何原本中译本}}
+		\caption*{\tiny 几何原本中译本}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}{0.65\textwidth}
@@ -229,19 +220,19 @@
 	\begin{figure}[htbp]
 		\uncover<1->{\begin{minipage}[b]{0.2\textwidth}\centering
 			\includegraphics[scale=0.15]{figures/tl.eps}
-			\caption*{\tiny图灵本人}
+			\caption*{\tiny 图灵本人}
 		\end{minipage}}
 		\uncover<4->{\begin{minipage}[b]{0.2\textwidth}\centering
 			\includegraphics[scale=0.4]{figures/tltj.eps}
-			\caption*{\tiny图灵机}
+			\caption*{\tiny 图灵机}
 		\end{minipage}}
 		\uncover<5->{\begin{minipage}[b]{0.2\textwidth}\centering
 			\includegraphics[scale=0.2]{figures/bxfny.eps}
-			\caption*{\tiny宾夕法尼亚大学校徽}
+			\caption*{\tiny 宾夕法尼亚大学校徽}
 		\end{minipage}}
 		\uncover<6->{\begin{minipage}[b]{0.2\textwidth}\centering
 			\includegraphics[scale=0.4]{figures/plsd.eps}
-			\caption*{\tiny普林斯顿大学校徽}
+			\caption*{\tiny 普林斯顿大学校徽}
 		\end{minipage}}
 	\end{figure}
 	
@@ -402,7 +393,7 @@
 			\path[->] (start) edge (s_0);}
 	
 			\end{tikzpicture}
-		\caption*{\tiny识别$(ab)^*|(ba)^*$}
+		\caption*{\tiny 识别$(ab)^*|(ba)^*$}
 	\end{figure}
 \end{frame}
 
@@ -526,7 +517,7 @@
 		\begin{minipage}{0.4\textwidth}\centering
 			\includegraphics[height=4\baselineskip]{figures/pl.eps}
 		\end{minipage}
-		\caption*{\tiny坐电梯和爬楼梯固有难度都是克服重力做功$mgh$}
+		\caption*{\tiny 坐电梯和爬楼梯固有难度都是克服重力做功$mgh$}
 	\end{figure}
 \end{frame}
 
