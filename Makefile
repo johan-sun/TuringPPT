@@ -1,18 +1,17 @@
 TEX = $(notdir $(wildcard *.tex))
 PDF = $(patsubst %.tex, %.pdf, $(TEX))
 
-.PHONY:test clean turing
+.PHONY:all clean
 
-turing:TuringPPT.pdf
-
-test:$(PDF)
-
-%.pdf:%.tex
-	xelatex $<
-	xelatex $<
+all:TuringPPT
+TuringPPT:
+	xelatex $@
+	bibtex $@
+	xelatex $@
+	xelatex $@
 	[ -d pdf ] || mkdir pdf
-	mv $@ pdf/
+	mv $@.pdf pdf/
 
 clean:
-	rm -f *.log *.nav *.aux *.out *.snm *.toc *.synctex.gz
+	rm -f *.log *.nav *.aux *.out *.snm *.toc *.synctex.gz *.bbl *.blg
 	

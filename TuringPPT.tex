@@ -7,12 +7,12 @@
 }
 
 \usepackage[slantfont,boldfont]{xeCJK}
-%\setCJKmainfont{Songti SC} %mac osx
-%\setCJKmainfont{SimSun} windows下使用
-\setCJKmainfont{文泉驿微米黑}
+\setCJKmainfont{Songti SC} %mac osx
+%\setCJKmainfont{SimSun} %windows下使用
+%\setCJKmainfont{文泉驿微米黑} %linux
 
 
-
+\usepackage[numbers,sort&compress,super,square]{natbib}
 \usepackage{fontspec}%字间距控制
 \usepackage{tikz}%绘图
 \usetikzlibrary{positioning} %on grid
@@ -124,7 +124,7 @@
 			\item 1953年 获希伯来大学理学硕士(22岁)
 			\item 1956年 获普林斯顿大学博士学位(25岁)
 			\item 1959年 与达纳斯·斯科特共同发表『有限自动机与其判定性问题』(28岁)
-			\item 1975年 发明『米勒-拉宾素数检验』(44岁)
+			\item 1975年 发明『米勒-拉宾素数检验』\cite{rabin1976probabilistic,rabin1980probabilistic}(44岁)
 			\item \textcolor{red}{1976年 获得图灵奖，发表『计算复杂性』演讲(45岁)}
 			\item 1979年 发明第一个非对称密码系统—拉宾密码系统(48岁)
 			\item 1981年 提出『不经意传输』技术(50岁)
@@ -642,6 +642,13 @@
 
 PPT源代码@\href{https://github.com/syhkiller/TuringPPT}{\textcolor{blue}{\underline{https://github.com/syhkiller/TuringPPT}}} \\
 forked by \href{https://github.com/findingsea/TuringPPT}{\textcolor{blue}{\underline{https://github.com/findingsea/TuringPPT}}}}
+\end{frame}
+
+\bibliographystyle{unsrt}
+
+\section{参考文献}
+\begin{frame}{参考文献}
+\bibliography{references}
 \end{frame}
 
 \end{document}
